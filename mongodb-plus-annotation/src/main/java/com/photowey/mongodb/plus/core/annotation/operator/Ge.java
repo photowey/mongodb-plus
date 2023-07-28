@@ -13,20 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.photowey.mongodb.plus.core.annotation;
+package com.photowey.mongodb.plus.core.annotation.operator;
 
 import java.lang.annotation.*;
 
 /**
- * {@code DocumentId}
+ * {@code Ge}
  *
  * @author photowey
- * @date 2023/07/27
+ * @date 2023/07/28
  * @since 1.0.0
  */
+@Operator
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
-public @interface DocumentId {
-    // Mark
+public @interface Ge {
+
+    String value() default "";
+
+    String alias() default "";
+
+    FieldStrategy.Naming naming() default FieldStrategy.Naming.PLAIN_CASE;
+
 }
