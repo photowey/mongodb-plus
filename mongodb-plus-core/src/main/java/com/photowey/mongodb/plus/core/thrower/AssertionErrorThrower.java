@@ -13,27 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.photowey.mongodb.plus.core.constant;
+package com.photowey.mongodb.plus.core.thrower;
 
 /**
- * {@code MongoConstants}
+ * {@code AssertionErrorThrower}
  *
  * @author photowey
- * @date 2023/07/27
+ * @date 2023/07/28
  * @since 1.0.0
  */
-public interface MongoConstants {
+public final class AssertionErrorThrower {
 
-    // ---------------------------------------------------------------- String
+    private AssertionErrorThrower() {
+        // utility class; can't create
+        throwz(AssertionErrorThrower.class);
+    }
 
-    String DEFAULT_MONGO_ID = "_id";
-    String DEFAULT_DATABASE_ID = "id";
-
-    String DEFAULT_DELETED_KEY = "deleted";
-    String MONGO_TRANSACTION_MANAGER_BEAN_NAME = "org.springframework.data.mongodb.MongoTransactionManager";
-
-    // ---------------------------------------------------------------- Int
-
-    int DEFAULT_DELETED_VALUE = 1;
-
+    public static <T> void throwz(Class<T> clazz) {
+        // utility class; can't create
+        throw new AssertionError("No " + clazz.getName() + " instances for you!");
+    }
 }

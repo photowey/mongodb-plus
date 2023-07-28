@@ -13,27 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.photowey.mongodb.plus.core.constant;
+package com.photowey.mongodb.plus.core.exception;
 
 /**
- * {@code MongoConstants}
+ * {@code ReflectionException}
  *
  * @author photowey
- * @date 2023/07/27
+ * @date 2023/07/28
  * @since 1.0.0
  */
-public interface MongoConstants {
+public class ReflectionException extends RuntimeException {
 
-    // ---------------------------------------------------------------- String
+    private static final long serialVersionUID = 5998461193809187817L;
 
-    String DEFAULT_MONGO_ID = "_id";
-    String DEFAULT_DATABASE_ID = "id";
+    public ReflectionException() {
+        super();
+    }
 
-    String DEFAULT_DELETED_KEY = "deleted";
-    String MONGO_TRANSACTION_MANAGER_BEAN_NAME = "org.springframework.data.mongodb.MongoTransactionManager";
+    public ReflectionException(String message) {
+        super(message);
+    }
 
-    // ---------------------------------------------------------------- Int
+    public ReflectionException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-    int DEFAULT_DELETED_VALUE = 1;
+    public ReflectionException(Throwable cause) {
+        super(cause);
+    }
 
 }

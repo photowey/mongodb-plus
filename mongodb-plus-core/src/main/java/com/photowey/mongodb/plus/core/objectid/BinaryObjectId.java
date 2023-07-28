@@ -27,13 +27,13 @@ import java.util.function.Supplier;
  */
 public class BinaryObjectId<T extends Number> {
 
+    public static final Function<String, Integer> CONVERTER_INT = Integer::parseInt;
+    public static final Function<String, Long> CONVERTER_LONG = Long::parseLong;
+    public static final Function<String, String> CONVERTER_STRING = Function.identity();
+
     private static final String BINARY_OBJECT_ID_TEMPLATE = "%02d%d%d";
     private static final int SHORTLY_OBJECT_ID_LENGTH = 4;
     private static final int PREFIX_LENGTH = 2;
-
-    public final Function<String, Integer> converterInt = Integer::parseInt;
-    public final Function<String, Long> converterLong = Long::parseLong;
-    public final Function<String, String> converterString = Function.identity();
 
     /**
      * Complex ObjectId
