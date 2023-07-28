@@ -34,7 +34,7 @@ public final class ObjectUtils {
     }
 
     public static <T> boolean isNotNull(T v) {
-        if (v instanceof String) {
+        if (v instanceof CharSequence) {
             return StringUtils.isNotBlank((CharSequence) v);
         } else if (v instanceof Collection) {
             return CollectionUtils.isNotEmpty((Collection<?>) v);
