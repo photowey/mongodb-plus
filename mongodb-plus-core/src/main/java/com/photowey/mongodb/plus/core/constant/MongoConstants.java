@@ -26,11 +26,10 @@ public interface MongoConstants {
 
     // ---------------------------------------------------------------- String
 
-    String OBJECT_ID = "_id";
-    String DEFAULT_DELETED_FIELD = "deleted";
+    String DEFAULT_MONGO_ID = "_id";
+    String DEFAULT_DATABASE_ID = "id";
 
-    // ---------------------------------------------------------------- Bean
-
+    String DEFAULT_DELETED_KEY = "deleted";
     String MONGO_TRANSACTION_MANAGER_BEAN_NAME = "org.springframework.data.mongodb.MongoTransactionManager";
 
     // ---------------------------------------------------------------- Int
