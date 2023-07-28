@@ -12,7 +12,6 @@
     </parent>
 
     <artifactId>mongodb-plus-spring-boot-starter</artifactId>
-    <packaging>pom</packaging>
 
     <!-- @formatter:off -->
     <name>mongodb-plus-spring-boot-starter</name>
