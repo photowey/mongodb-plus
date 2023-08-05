@@ -61,7 +61,6 @@ public abstract class Wrapper<T> implements Serializable {
         this.pairs = new HashMap<>(1 << 4);
     }
 
-
     public void clear() {
         this.query = new Query();
         this.criteria = new Criteria();
