@@ -57,6 +57,26 @@ public abstract class AbstractWrapper<T, FIELD, CHILDREN extends AbstractWrapper
         return this.eq(condition, field, value, this::fieldToString);
     }
 
+    // ----------------------------------------------------------------
+
+    protected CHILDREN appendGt(boolean condition, FIELD field, Object value) {
+        return this.gt(condition, field, value, this::fieldToString);
+    }
+
+    protected CHILDREN appendGte(boolean condition, FIELD field, Object value) {
+        return this.gte(condition, field, value, this::fieldToString);
+    }
+
+    protected CHILDREN appendLt(boolean condition, FIELD field, Object value) {
+        return this.lt(condition, field, value, this::fieldToString);
+    }
+
+    protected CHILDREN appendLte(boolean condition, FIELD field, Object value) {
+        return this.lte(condition, field, value, this::fieldToString);
+    }
+
+    // ----------------------------------------------------------------
+
     protected CHILDREN appendIn(boolean condition, FIELD field, Object value) {
         return this.in(condition, field, value, this::fieldToString);
     }
@@ -90,6 +110,40 @@ public abstract class AbstractWrapper<T, FIELD, CHILDREN extends AbstractWrapper
     }
 
     protected CHILDREN ne(boolean condition, Object value, Supplier<Criteria> fx) {
+        return this.deduce(condition, value, () -> this.criteria.andOperator(fx.get()));
+    }
+
+    // ----------------------------------------------------------------
+
+    protected CHILDREN gt(boolean condition, FIELD field, Object value, Stringer<FIELD> fx) {
+        return this.gt(condition, value, () -> Criteria.where(fx.apply(field)).gt(value));
+    }
+
+    protected CHILDREN gt(boolean condition, Object value, Supplier<Criteria> fx) {
+        return this.deduce(condition, value, () -> this.criteria.andOperator(fx.get()));
+    }
+
+    protected CHILDREN gte(boolean condition, FIELD field, Object value, Stringer<FIELD> fx) {
+        return this.gte(condition, value, () -> Criteria.where(fx.apply(field)).gte(value));
+    }
+
+    protected CHILDREN gte(boolean condition, Object value, Supplier<Criteria> fx) {
+        return this.deduce(condition, value, () -> this.criteria.andOperator(fx.get()));
+    }
+
+    protected CHILDREN lt(boolean condition, FIELD field, Object value, Stringer<FIELD> fx) {
+        return this.lt(condition, value, () -> Criteria.where(fx.apply(field)).lt(value));
+    }
+
+    protected CHILDREN lt(boolean condition, Object value, Supplier<Criteria> fx) {
+        return this.deduce(condition, value, () -> this.criteria.andOperator(fx.get()));
+    }
+
+    protected CHILDREN lte(boolean condition, FIELD field, Object value, Stringer<FIELD> fx) {
+        return this.lte(condition, value, () -> Criteria.where(fx.apply(field)).lte(value));
+    }
+
+    protected CHILDREN lte(boolean condition, Object value, Supplier<Criteria> fx) {
         return this.deduce(condition, value, () -> this.criteria.andOperator(fx.get()));
     }
 

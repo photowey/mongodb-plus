@@ -38,6 +38,26 @@ public interface Comparable<CHILDREN, FIELD> extends Serializable {
         return this.ne(true, field, value);
     }
 
+    // ----------------------------------------------------------------
+
+    default CHILDREN gt(FIELD field, Object value) {
+        return this.gt(true, field, value);
+    }
+
+    default CHILDREN gte(FIELD field, Object value) {
+        return this.gte(true, field, value);
+    }
+
+    default CHILDREN lt(FIELD field, Object value) {
+        return this.lt(true, field, value);
+    }
+
+    default CHILDREN lte(FIELD field, Object value) {
+        return this.lte(true, field, value);
+    }
+
+    // ----------------------------------------------------------------
+
     default CHILDREN in(FIELD field, Object value) {
         return this.in(true, field, value);
     }
@@ -54,9 +74,23 @@ public interface Comparable<CHILDREN, FIELD> extends Serializable {
         return this.notIn(true, field, values);
     }
 
+    // ----------------------------------------------------------------
+
     CHILDREN eq(boolean condition, FIELD field, Object value);
 
     CHILDREN ne(boolean condition, FIELD field, Object value);
+
+    // ----------------------------------------------------------------
+
+    CHILDREN gt(boolean condition, FIELD field, Object value);
+
+    CHILDREN gte(boolean condition, FIELD field, Object value);
+
+    CHILDREN lt(boolean condition, FIELD field, Object value);
+
+    CHILDREN lte(boolean condition, FIELD field, Object value);
+
+    // ----------------------------------------------------------------
 
     CHILDREN in(boolean condition, FIELD field, Object value);
 
