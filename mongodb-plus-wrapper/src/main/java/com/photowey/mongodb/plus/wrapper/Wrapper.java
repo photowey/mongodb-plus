@@ -42,7 +42,7 @@ public abstract class Wrapper<T> implements Serializable {
     protected Map<String, Object> pairs;
 
     public Wrapper() {
-        this(null);
+        this((T) null);
     }
 
     public Wrapper(T document) {
@@ -56,6 +56,13 @@ public abstract class Wrapper<T> implements Serializable {
             } catch (Exception ignored) {
             }
         }
+        this.query = new Query();
+        this.criteria = new Criteria();
+        this.pairs = new HashMap<>(1 << 4);
+    }
+
+    public Wrapper(Class<T> documentClass) {
+        this.documentClass = documentClass;
         this.query = new Query();
         this.criteria = new Criteria();
         this.pairs = new HashMap<>(1 << 4);

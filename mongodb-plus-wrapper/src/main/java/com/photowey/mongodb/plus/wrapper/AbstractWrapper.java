@@ -38,6 +38,17 @@ public abstract class AbstractWrapper<T, FIELD, CHILDREN extends AbstractWrapper
 
     protected final CHILDREN wrappedThis = (CHILDREN) this;
 
+    public AbstractWrapper() {
+    }
+
+    public AbstractWrapper(T document) {
+        super(document);
+    }
+
+    public AbstractWrapper(Class<T> documentClass) {
+        super(documentClass);
+    }
+
     @Override
     public <V> CHILDREN eq(Map<FIELD, V> pairs) {
         if (CollectionUtils.isNotEmpty(pairs)) {
