@@ -47,18 +47,13 @@ public abstract class Wrapper<T> implements Serializable {
 
     public Wrapper(T document) {
         this.document = document;
-        if (ObjectUtils.isNotNull(this.document)) {
-            this.documentClass = (Class<T>) this.document.getClass();
-        } else {
-            try {
-                Type runtimeType = this.determineGenericType();
-                this.documentClass = (Class<T>) runtimeType;
-            } catch (Exception ignored) {
-            }
-        }
         this.query = new Query();
         this.criteria = new Criteria();
         this.pairs = new HashMap<>(1 << 4);
+
+        if (ObjectUtils.isNotNull(this.document)) {
+            this.documentClass = (Class<T>) this.document.getClass();
+        }
     }
 
     public Wrapper(Class<T> documentClass) {
@@ -74,8 +69,14 @@ public abstract class Wrapper<T> implements Serializable {
         this.pairs.clear();
     }
 
+    // ----------------------------------------------------------------
+
     public Class<T> getDocumentClass() {
         return this.documentClass;
+    }
+
+    public void setDocumentClass(Class<T> documentClass) {
+        this.documentClass = documentClass;
     }
 
     public T getDocument() {
@@ -85,6 +86,8 @@ public abstract class Wrapper<T> implements Serializable {
     public void setDocument(T document) {
         this.document = document;
     }
+
+    // ----------------------------------------------------------------
 
     public T document() {
         return this.getDocument();
@@ -96,6 +99,10 @@ public abstract class Wrapper<T> implements Serializable {
 
     public Class<T> documentClass() {
         return this.getDocumentClass();
+    }
+
+    public void documentClass(Class<T> documentClass) {
+        this.documentClass = documentClass;
     }
 
     // ----------------------------------------------------------------
